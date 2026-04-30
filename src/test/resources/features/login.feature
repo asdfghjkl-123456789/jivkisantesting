@@ -12,6 +12,17 @@ Scenario: Successful Admin Login
     Then user should be logged in as "Harsha"
     And the Admin Panel should be visible
  
+Scenario: Admin panel access validation
+    When user enters email "harshask274@gmail.com" and password "Harsha123"
+    Then user should be logged in as "Harsha"
+    And verify if user is Admin to show Admin Panel
+ 
+Scenario: Admin panel access validation
+    When user enters email "shleya111@gmail.com" and password "shreya164"
+    Then user should be logged in as "Shreya A J"
+    And verify if user is Admin to show Admin Panel
+    
+ 
   Scenario: Successful Normal User Login
     When user enters email "shleya111@gmail.com" and password "shreya164"
     Then user should be logged in as "Shreya A J"

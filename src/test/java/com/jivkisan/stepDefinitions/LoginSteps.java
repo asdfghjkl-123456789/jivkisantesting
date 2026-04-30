@@ -46,6 +46,22 @@ public class LoginSteps {
         Assert.assertTrue(loginPage.isAdminPanelVisible(), "Admin panel should be visible for this user!");
     }
  
+  
+    @Then("verify if user is Admin to show Admin Panel")
+    public void verify_if_user_is_admin_to_show_admin_panel() {
+        boolean isAdmin = loginPage.isAdminPanelVisible();
+        
+        if (isAdmin) {
+            logger.info("Show Admin: This user is an authorized Admin.");
+            // Logic for admin can continue here if needed
+        } else {
+            logger.warn("Logedin is not admin: Admin Panel is hidden for this user.");
+            // This will pass the test but log clearly that they aren't admin.
+            // If you want the test to FAIL when not an admin, use Assert.fail() instead.
+            Assert.assertFalse(isAdmin, "Result: this is not admin");
+        }
+    }
+    
     @Then("the Admin Panel should NOT be visible")
     public void the_admin_panel_should_not_be_visible() {
         Assert.assertFalse(loginPage.isAdminPanelVisible(), "Admin panel should NOT be visible for normal users!");

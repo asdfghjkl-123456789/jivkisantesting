@@ -18,10 +18,29 @@ public class LoginPage {
     private final By submitLoginBtn = By.cssSelector("#loginForm button[type='submit']");
     private final By profileName = By.id("profileName");
     private final By adminPanelBtn = By.id("adminPanelBtn");
- 
+ // Replace the old locator with this one:
+    private final By adminDashboardHeader = By.xpath("//h2[text()='Admin Management']");
+    
+    
+ // Add these methods inside LoginPage class
+    public void clickAdminPanel() {
+        wait.until(ExpectedConditions.elementToBeClickable(adminPanelBtn)).click();
+    }
+
+    public boolean isAdminDashboardDisplayed() {
+        try {
+            // Increase wait slightly to allow for the smooth scroll/display transition
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(adminDashboardHeader)).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        
     }
  
     public void openApp(String url) {
