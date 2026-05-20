@@ -1,9 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="JivKisan Parallel Suite" parallel="methods" thread-count="2" data-provider-thread-count="2">
-    <test name="Test Set A and B">
+<suite name="JivKisan Strict Ordered Suite" parallel="none" data-provider-thread-count="2">
+
+    <!-- Set A -->
+    <test name="Execute Set A">
+        <parameter name="cucumber.filter.tags" value="@SetA"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetA.json"/>
         <classes>
             <class name="com.jivkisan.runners.RunCucumberTest"/>
         </classes>
     </test>
+
+    <!-- Set B -->
+    <test name="Execute Set B">
+        <parameter name="cucumber.filter.tags" value="@SetB"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetB.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set C -->
+    <test name="Execute Set C">
+        <parameter name="cucumber.filter.tags" value="@SetC"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetC.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set D -->
+    <test name="Execute Set D">
+        <parameter name="cucumber.filter.tags" value="@SetD"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetD.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set E -->
+    <test name="Execute Set E">
+        <parameter name="cucumber.filter.tags" value="@SetE"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetE.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set F -->
+    <test name="Execute Set F">
+        <parameter name="cucumber.filter.tags" value="@SetF"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetF.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set G -->
+    <test name="Execute Set G">
+        <parameter name="cucumber.filter.tags" value="@SetG"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetG.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set H -->
+    <test name="Execute Set H">
+        <parameter name="cucumber.filter.tags" value="@SetH"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetH.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set I -->
+    <test name="Execute Set I">
+        <parameter name="cucumber.filter.tags" value="@SetI"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetI.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <test name="Execute Set J">
+        <parameter name="cucumber.filter.tags" value="@SetJ"/>
+        <parameter name="cucumber.plugin" value="json:target/cucumber-reports/cucumber-SetJ.json"/>
+        <classes>
+            <class name="com.jivkisan.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+
+    <!-- Set K (Launches your TestNG emailable-report.html after all tests are done) -->
+    <test name="Execute Set K - Launch TestNG Report">
+        <classes>
+            <class name="com.jivkisan.runners.AutoItReportTest"/>
+        </classes>
+    </test>
+
 </suite>

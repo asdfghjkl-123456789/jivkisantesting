@@ -13,13 +13,13 @@ Feature: JivKisan Authentication
     Then user should be logged in as "Harsha"
     And the Admin Panel should be visible
 
-  @SetB
+  @SetA
   Scenario: Successful Normal User Login
     When user enters email "shleya111@gmail.com" and password "shreya164"
     Then user should be logged in as "Shreya A J"
     And the Admin Panel should NOT be visible
 
-  @SetA
+  @SetB
   Scenario: Admin panel access validation for Chandini
     When user enters email "chandinip72@gmail.com" and password "Chandini123"
     Then user should be logged in as "Chandini"
@@ -33,14 +33,14 @@ Feature: JivKisan Authentication
     And user navigates to my cart menu
     Then user should see product details and the final total value in the console
 
-  @SetA
+  @SetC
   Scenario: Count number of Orders and Applications
     When user enters email "harshask274@gmail.com" and password "Harsha123"
     Then user should be logged in as "Harsha"
     And the Admin Panel should be visible
     And the user counts the total orders and applications
 
-  @SetB
+  @SetC
   Scenario: Submit Raita Membership application
     When user enters email "chandinip72@gmail.com" and password "Chandini123"
     Then user should be logged in as "Chandini"
@@ -48,31 +48,21 @@ Feature: JivKisan Authentication
     And user applies for Raita Membership with details
     Then the application should be submitted successfully
 
-  @SetA
+  @SetD
   Scenario: Access member-only discussion forum - Shreya
     When user enters email "shleya111@gmail.com" and password "shreya164"
     Then user should be logged in as "Shreya A J"
     When user navigates to Organic Raita section
     Then verify if member application is approved to access forum
 
-  @SetB
+  @SetD
   Scenario: Access member-only discussion forum - Harsha
     When user enters email "harshask274@gmail.com" and password "Harsha123"
     Then user should be logged in as "Harsha"
     When user navigates to Organic Raita section
     Then verify if member application is approved to access forum
 
-  @SetA
-  Scenario: Admin approves pending applications and payments
-    When user enters email "harshask274@gmail.com" and password "Harsha123"
-    Then user should be logged in as "Harsha"
-    And the Admin Panel should be visible
-    When user clicks on Admin Panel button
-    And Admin approves a pending Supplier application
-    And Admin approves a pending Payment confirmation
-    And Admin approves a pending Raita application
-
-  @SetB
+  @SetE
   Scenario: Cart persistence check after refresh and re-login
     When user enters email "shleya111@gmail.com" and password "shreya164"
     And user navigates to all products page
@@ -84,7 +74,7 @@ Feature: JivKisan Authentication
     And user navigates to my cart menu
     Then user should see product details and the final total value in the console
 
-  @SetA
+  @SetE
   Scenario: Post message in Organic Raita forum and verify timestamp
     When user enters email "rockboymahi@gmail.com" and password "Mahesh"
     Then user should be logged in as "Mahesh"
@@ -92,7 +82,17 @@ Feature: JivKisan Authentication
     And user posts a forum message "Hello, testing the organic raita panel"
     Then the message should be visible with current username and timestamp
 
-  @SetB
+  @SetF
+  Scenario: Admin approves pending applications and payments
+    When user enters email "harshask274@gmail.com" and password "Harsha123"
+    Then user should be logged in as "Harsha"
+    And the Admin Panel should be visible
+    When user clicks on Admin Panel button
+    And Admin approves a pending Supplier application
+    And Admin approves a pending Payment confirmation
+    And Admin approves a pending Raita application
+
+  @SetF
   Scenario: Update item quantity in cart only done by respected seller
     When user enters email "shleya111@gmail.com" and password "shreya164"
     Then user should be logged in as "Shreya A J"
@@ -100,7 +100,7 @@ Feature: JivKisan Authentication
     And the seller updates the number of units for their items randomly below 150
     Then the product units should reflect the new changes
 
-  @SetA
+  @SetG
   Scenario: Submit Supplier Application with Certificate
     When user enters email "shleya111@gmail.com" and password "shreya164"
     Then user should be logged in as "Shreya A J"
@@ -108,7 +108,7 @@ Feature: JivKisan Authentication
     And user applies for Supplier Membership with certificate
     Then the supplier application should be submitted successfully
 
-  @SetB
+  @SetG
   Scenario: Session logout and back button protection for Organic Raita
     When user enters email "rockboymahi@gmail.com" and password "Mahesh"
     Then user should be logged in as "Mahesh"
@@ -116,11 +116,10 @@ Feature: JivKisan Authentication
     Then verify if member application is approved to access forum
     When user clicks on the profile name
     And user clicks on logout button
-    And user refreshes the authentication page
     When user attempts to navigate back in the browser
     Then the user should be restricted from accessing the Organic Raita content
 
-  @SetA
+  @SetH
   Scenario: Verify search functionality across All Products and Organic panels
     When user enters email "rockboymahi@gmail.com" and password "Mahesh"
     Then user should be logged in as "Mahesh"
@@ -131,7 +130,7 @@ Feature: JivKisan Authentication
     When user searches for "Organic Mango" in the "Organic" panel
     Then the product "Organic Mango" should be visible in the results
 
-  @SetB
+  @SetH
   Scenario: Validate External Mandi API Data Structure
     Given the Mandi Price API is available
     When I send a GET request to the data.gov.in resource
@@ -139,7 +138,7 @@ Feature: JivKisan Authentication
     And each record should contain "commodity", "market", "min_price", and "modal_price"
     And the "modal_price" should be a valid numeric string
 
-  @SetA
+  @SetI
   Scenario: Validate Supplier Certificate Base64 Payload Performance
     When user enters email "chandinip72@gmail.com" and password "Chandini123"
     Then user should be logged in as "Chandini"
@@ -148,9 +147,15 @@ Feature: JivKisan Authentication
     Then the supplier application should complete within 10 seconds
     And the system should accept the large Base64 payload without errors
 
-  @SetB
+  @SetI
   Scenario: Validate AI Advisory opens in a new tab
     Given user is on the JivKisan homepage
     When user clicks on the AI Advisory menu link
     Then a new tab should open with the AI Advisory page
     
+@SetJ
+  Scenario: Validate Interactive Embedding Frame Content View
+    Given user is on the JivKisan homepage
+    When user focuses on the embedded iframe window frame
+    Then verify that the internal player is fully loaded and visible
+    And user switches focus back to the main application container

@@ -441,7 +441,7 @@ public class LoginPage {
              highlightElement(logout); // Visual feedback
              
              ((JavascriptExecutor) driver).executeScript("arguments[0].click();", logout);
-             Thread.sleep(2000); // Pause to see the result of the click
+             Thread.sleep(1000); // Pause to see the result of the click
          } catch (Exception e) {
              logger.error("Logout failed: " + e.getMessage());
              ((JavascriptExecutor) driver).executeScript("localStorage.clear(); sessionStorage.clear(); window.location.reload();");
