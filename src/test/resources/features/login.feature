@@ -83,6 +83,14 @@ Feature: JivKisan Authentication
     Then the message should be visible with current username and timestamp
 
   @SetF
+  Scenario: Update item quantity in cart only done by respected seller
+    When user enters email "shleya111@gmail.com" and password "shreya164"
+    Then user should be logged in as "Shreya A J"
+    And user navigates to all products page
+    And the seller updates the number of units for their items randomly below 150
+    Then the product units should reflect the new changes
+
+  @SetF
   Scenario: Admin approves pending applications and payments
     When user enters email "harshask274@gmail.com" and password "Harsha123"
     Then user should be logged in as "Harsha"
@@ -91,14 +99,6 @@ Feature: JivKisan Authentication
     And Admin approves a pending Supplier application
     And Admin approves a pending Payment confirmation
     And Admin approves a pending Raita application
-
-  @SetF
-  Scenario: Update item quantity in cart only done by respected seller
-    When user enters email "shleya111@gmail.com" and password "shreya164"
-    Then user should be logged in as "Shreya A J"
-    And user navigates to all products page
-    And the seller updates the number of units for their items randomly below 150
-    Then the product units should reflect the new changes
 
   @SetG
   Scenario: Submit Supplier Application with Certificate
@@ -152,8 +152,8 @@ Feature: JivKisan Authentication
     Given user is on the JivKisan homepage
     When user clicks on the AI Advisory menu link
     Then a new tab should open with the AI Advisory page
-    
-@SetJ
+
+  @SetJ
   Scenario: Validate Interactive Embedding Frame Content View
     Given user is on the JivKisan homepage
     When user focuses on the embedded iframe window frame
