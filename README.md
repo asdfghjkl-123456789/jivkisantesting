@@ -1,0 +1,1 @@
+Developed and executed UI and API automation test scripts using Selenium WebDriver, Java, Cucumber BDD, TestNG, POM, and REST Assured. Contributed to functional, regression, and end-to-end testing, defect tracking, debugging, and test process improvements.
